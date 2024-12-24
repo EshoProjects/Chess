@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace ChessLogic
+﻿namespace ChessLogic
 {
     public enum SquareColor
     {
@@ -47,5 +44,11 @@ namespace ChessLogic
         {
             return !(left == right);
         }
+
+        public static Position operator +(Position pos, Direction dir)
+        {
+            return new Position(pos.Row + dir.RowDelta, pos.Column + dir.ColumnDelta);
+        }
+
     }
 }
