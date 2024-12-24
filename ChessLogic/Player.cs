@@ -1,6 +1,6 @@
 ﻿namespace ChessLogic
 {
-    internal enum Player
+    public enum Player
     {
         None,
         White,
