@@ -1,11 +1,5 @@
 ﻿namespace ChessLogic
 {
-    public enum SquareColor
-    {
-        White,
-        Black
-    }
-
     public class Position
     {
         public int Row { get; }
@@ -17,10 +11,14 @@
             Column = column;
         }
 
-        public SquareColor GetSquareColor()
+        public Player SquareColor()
         {
-            // Bestämmer färg på rutan baserat på rad och kolumn
-            return (Row + Column) % 2 == 0 ? SquareColor.White : SquareColor.Black;
+            if ((Row + Column) % 2 == 0)
+            {
+                return Player.White;
+            }
+
+            return Player.Black;
         }
 
         public override bool Equals(object obj)
@@ -49,6 +47,5 @@
         {
             return new Position(pos.Row + dir.RowDelta, pos.Column + dir.ColumnDelta);
         }
-
     }
 }

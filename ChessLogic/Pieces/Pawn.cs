@@ -1,30 +1,54 @@
-﻿using ChessLogic;
-
-public abstract class Piece
+﻿namespace ChessLogic
 {
-    public abstract PieceType Type { get; }
-    public abstract Player Color { get; }
-    public bool HasMoved { get; set; }
-
-    public abstract Piece Copy();
-}
-
-public class Pawn : Piece
-{
-    public override PieceType Type => PieceType.Pawn;
-    public override Player Color { get; }
-
-    public Pawn(Player color)
+    public class Pawn : Piece
     {
-        Color = color;
-    }
+        public override PieceType Type => PieceType.Pawn;
+        public override Player Color { get; }
 
-    public override Piece Copy()
-    {
-        Pawn copy = new Pawn(Color)
+        private readonly Direction forward;
+
+        public Pawn(Player color)
         {
-            HasMoved = HasMoved
-        };
-        return copy;
+            Color = color;
+
+            if (color == Player.White)
+            {
+                forward = Direction.North;
+            }
+            else if (color == Player.Black)
+            {
+                forward = Direction.South;
+            }
+        }
+
+        public override Piece Copy()
+        {
+            Pawn copy = new Pawn(Color);
+            copy.HasMoved = HasMoved;
+            return copy;
+        }
+
+        private static bool CanMoveTo(Position pos, Board board)
+        {
+            return Board.IsInside(pos) && board.IsEmpty(pos);
+        }
+
+        private bool CanCaptureAt(Position pos, Board board)
+        {
+            if (!Board.IsInside(pos) || board.IsEmpty(pos))
+            {
+                return false;
+            }
+
+            return board[pos].Color != Color;
+        }
+
+        
+
+        
+
+        
+
+        
     }
 }
