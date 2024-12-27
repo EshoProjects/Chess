@@ -22,7 +22,7 @@ namespace ChessUI
         private readonly Dictionary<Position, Move> moveCache = new Dictionary<Position, Move>();
 
         private GameState gameState;
-        private Position SelectedPos = null;
+        private Position selectedPos = null;
 
         public MainWindow()
         {
@@ -62,7 +62,18 @@ namespace ChessUI
         }
         private void BoardGrid_MouseDown(object sender, MouseButtonEventArgs e)
         {
+
             Point point = e.GetPosition(BoardGrid);
+            Position pos = ToSquarePosition(point);
+
+            if (selectedPos == null)
+            {
+                OnFromPositionSelected(pos);
+            }
+            else
+            {
+                OnToPositionSelected(pos);
+            }
         }
 
         private Position ToSquarePosition(Point point)
@@ -72,6 +83,19 @@ namespace ChessUI
             int col = (int)(point.X / squareSize);
             return new Position(row, col);
         }
+
+        private void OnFromPositionSelected(Position pos)
+        {
+            IEnumerable<Move> moves = gameState.LegalMovesForPiece(pos);
+
+            if (moves.Any())
+            {
+                selectedPos = pos;
+                CacheMoves(moves);
+                ShowHighlights();
+            }
+        }
+
         private void CacheMoves(IEnumerable<Move> moves)
         {
             moveCache.Clear();
