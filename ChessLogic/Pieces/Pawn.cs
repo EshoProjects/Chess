@@ -9,7 +9,7 @@ public abstract class Piece
     public abstract Piece Copy();
 }
 
-internal class Pawn : Piece
+public class Pawn : Piece
 {
     public override PieceType Type => PieceType.Pawn;
     public override Player Color { get; }
