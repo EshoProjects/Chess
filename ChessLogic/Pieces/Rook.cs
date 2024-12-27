@@ -7,7 +7,10 @@
 
         private static readonly Direction[] dirs = new Direction[]
         {
-                Direction.North, Direction.South, Direction.East, Direction.West,
+            Direction.North,
+            Direction.South,
+            Direction.East,
+            Direction.West,
         };
 
         public Rook(Player color)

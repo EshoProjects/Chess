@@ -1,4 +1,5 @@
-﻿namespace ChessLogic
+﻿
+namespace ChessLogic
 {
     public class Board
     {
@@ -61,6 +62,11 @@
         public bool IsEmpty(Position pos)
         {
             return this[pos] == null;
-        }   
+        }
+
+        internal Position GetPawnSkipPosition(Player player)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
