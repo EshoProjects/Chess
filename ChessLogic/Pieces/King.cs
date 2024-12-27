@@ -56,6 +56,5 @@
                 yield return new NormalMove(from, to);
             }
         }
-
     }
 }

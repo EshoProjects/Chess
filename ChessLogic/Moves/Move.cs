@@ -9,5 +9,7 @@
         public abstract Position ToPos { get; }
 
         public abstract bool Execute(Board board);
+
+
     }
 }
