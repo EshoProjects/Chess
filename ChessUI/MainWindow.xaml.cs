@@ -9,6 +9,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ChessLogic;
+using Microsoft.Win32.SafeHandles;
 
 namespace ChessUI
 {
@@ -94,6 +95,23 @@ namespace ChessUI
                 CacheMoves(moves);
                 ShowHighlights();
             }
+        }
+
+        private void OnToPositionSelected(Position pos)
+        {
+            selectedPos = null;
+            HideHighlights();
+
+            if (moveCache.TryGetValue(pos, out Move move))
+            {
+                HandleMove(move);
+            }
+        }
+
+        private void HandleMove(Move move)
+        {
+            gameState.MakeMove(move);
+            DrawBoard(gameState.Board);
         }
 
         private void CacheMoves(IEnumerable<Move> moves)
