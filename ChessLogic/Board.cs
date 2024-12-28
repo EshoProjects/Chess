@@ -98,9 +98,9 @@ namespace ChessLogic
         {
             Board copy = new Board();
 
-            foreach (Position pos in PiecePositions))
+            foreach (Position pos in PiecePositions())
             {
-                copy[pos] = this[pos].Copy;
+                copy[pos] = this[pos].Copy();
             }
 
             return copy;
