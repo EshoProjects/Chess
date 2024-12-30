@@ -51,8 +51,9 @@ namespace ChessUI
                 EndReason.ThreefoldRepetition => "THREEFOLD REPETITION",
                 _ => ""
             };
+        }
 
-            private void Restart_Click(object sender, RoutedEventArgs e)
+        private void Restart_Click(object sender, RoutedEventArgs e)
         {
             OptionSelected?.Invoke(Option.Restart);
         }
