@@ -32,10 +32,10 @@ namespace ChessUI
 
         private static string PlayerString(Player player)
         {
-            return player switch 
-            { 
+            return player switch
+            {
                 Player.White => "WHITE",
-                Player.Black => "BLACK" ,
+                Player.Black => "BLACK",
                 _ => ""
             };
         }

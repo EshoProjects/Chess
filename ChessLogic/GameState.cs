@@ -12,9 +12,9 @@ namespace ChessLogic
 
         private int noCaptureOrPawnMoves = 0;
 
-        private int StateString;
+        private string stateString;
 
-        private readonly Dictionary<String, int> stateHistory = new Dictionary<String, int>();
+        private readonly Dictionary<string, int> stateHistory = new Dictionary<string, int>();
 
         public GameState(Player player, Board board)
         {
@@ -83,7 +83,7 @@ namespace ChessLogic
             }
             else if (Board.InsufficientMaterial())
             {
-                Result = Result.Draw(EndReason.InsufficentMaterial);
+                Result = Result.Draw(EndReason.InsufficientMaterial);
             }
             else if (FiftyMoveRule())
             {
